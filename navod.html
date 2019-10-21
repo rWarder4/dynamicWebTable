@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>Dynamická tabulka</h1>
+<h2>Informace</h2>
+<ul>
+<li>Autor: Jiří Richter, xricht19</li>
+<li>Název: Dynamická tabulka</li>
+<li>Skript vznikl jako školní projekt pro předmět WAP - Internetové aplikace.</li>
+</ul>
+<h2>Použití</h2>
+<p>Skript dynTable.js přidá libovolné tabulce definované v jazyce HTML možnosti vyhledávání a filtrování. Tabulku je nutné označit atributem <i>id</i> s libovolnou hodnotou, která je po-té předávána jako parametr funkce <i>dynamicTableInit</i>. Script upravuje data v těle tabulky, tedy mezi tagy &#60;tbody&#62;. Části tabulky mezi tagy thead a tfoot ponechává skript beze změny. Funkčnost bya testována v prohlížečích <i>Google Chrome, Internet Explorer, Edge</i> a <i>Mozilla Firefox</i>. <br>Na konci HTML stránky je nutné zavolat inicializační funkci skriptu tímto způsobem:</p>
+<pre>
+	&lt;script&gt;
+		dynamicTableInit("dynamicTable");
+	&lt;/script&gt;
+</pre>
+<p>Skript upravuje tabulku přidáním kontrolního řádnu jako prvního řádku do časti tabulky tbody. Velikost a písmo kontrolního řádku je možné upravovat pomocí css stylů. Více v kapitole <a href="#styl">Stylování</a> níže.</p>
+<h3>Filtrování</h3>
+<p>Skript umožňuje filtrovat jednotlivé sloupce dle jejich obsahu. Pokud jsou data již podle nějakého sloupce filtrovány, je filtrování v dalších sloupcích omezeno pouze na již vyfiltrovaná data.</p>
+<h3>Řazení</h3>
+<p>Data v tabulce lze řadit podle některého ze sloupců, pomocí šipek sestupně nebo vzestupně v kontrolním řádku tabulky. U každého sloupce je možné definovat, zda se bude řadit jako řetězec nebo jako čísla. Tato definice se udává u každého sloupce v části thead tabulky. Pokud definice chybí, probíhá řazení sloupce jako řetězec. Řazení je možné aplikovat na tabulku i po-té, co byla data vyfiltrována.</p>
+<p>Ukázka definice pro řazení sloupce jako řetězec a jako čísla: </p>
+<ul>
+<li>&lt;th data-sortSet&#61;&quot;text&quot;&gt;Company&lt;&#47;th&gt;</li>
+<li>&lt;th data-sortSet&#61;&quot;number&quot;&gt;Company&lt;&#47;th&gt;</li>
+</ul>
+<h2 id="styl">Stylování</h2>
+<p>Kontrolní řádek tabulky, který je přidán skriptem, je možné vzledově upravit pomocí css souboru s názvem <i>dynTable.css</i>. Skript upravuje pouze část tabulky tbody, veškerý vzhled zbytku tabulky včetně vzhledu vstahující se na celou část tabulky tbody zůstává zachován. Ukázkový soubor se stylem je poskytován společně se skriptem, styl je možné upravovat pomocí těchto tříd:</p>
+<ul>
+<li>dynTable_ControlCells - třída, která upravuje jednotlivé buňky kontrolního řádku</li>
+<li>dynTable_ControlRow - třída upravuje vzhled celého kontrolního řádku, tento atribut je přídán k tagu <i>tr</i></li>
+<li>dynTable_inputCell - třída upravuje vzhled pole, pomocí kterého probíhá filtrování tabulky</li>
+</ul>
+<h2>Ukázka tabulky s použitím skriptu dynTable.js:</h2>
+<pre>
+	&lt;table id=&quot;dynamicTable&quot;&gt;
+		&lt;thead&gt;
+			&lt;tr&gt;
+				&lt;th data-sortSet=&quot;text&quot;&gt;Company&lt;/th&gt;
+				&lt;th data-sortSet=&quot;text&quot;&gt;Contact&lt;/th&gt; 
+				&lt;th data-sortSet=&quot;text&quot;&gt;Country&lt;/th&gt; 
+				&lt;th data-sortSet=&quot;number&quot;&gt;Number&lt;/th&gt; 
+			&lt;/tr&gt; 
+		&lt;/thead&gt; 
+		&lt;tbody&gt; 
+			&lt;tr&gt; 
+				&lt;td&gt;Alfreds Futterkiste&lt;/td&gt; 
+				&lt;td&gt;Maria Anders&lt;/td&gt; 
+				&lt;td&gt;Germany&lt;/td&gt; 
+				&lt;td&gt;10&lt;/td&gt; 
+			&lt;/tr&gt; 
+		&lt;/tbody&gt; 
+	&lt;/table&gt; 
+</pre>
+</body>
+</html>

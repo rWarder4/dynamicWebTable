@@ -1,0 +1,12 @@
+.dynTable_ControlCells {
+	vertical-align : middle;
+	border : 1px solid black;
+}
+
+.dynTable_ControlRow {
+	background-color: orange;
+}
+
+.dynTable_inputCell {
+	font-size: 12px;
+}
